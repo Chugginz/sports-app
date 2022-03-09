@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS Dictionary (
+    word TEXT PRIMARY KEY
+);
