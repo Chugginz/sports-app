@@ -11,7 +11,9 @@ for folders at the moment for organizational purposes. All html files were "html
 Created and updated the index.html file. Now users are introduced by the logo of
 Sports App and a welcome page. Created the page explaining football. Also added
 a home.html file, a favicon, a login.html and created messaging folder in public.
-
+Added the page detailing the rules of football as well as a nav menu to get between
+different pages. Starting working on using an ESPN api to get scores for a game
+for /football/scores.html with the file /football.js in /Models.
 
 
 
