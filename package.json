@@ -17,5 +17,11 @@
     "App"
   ],
   "author": "Christian Huggins, Robin Omibri, Jacob Bell",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "json": "^11.0.0",
+    "sql": "^0.78.0"
+  }
 }
