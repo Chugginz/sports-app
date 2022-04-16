@@ -15,4 +15,6 @@ app.use(express.static("public", {
 app.use(express.json({limit: '200kb'}));
 app.use(express.urlencoded({ extended: false }));
 
+const liveChat = require('./Controllers/liveChat');
+
 module.exports = app;
