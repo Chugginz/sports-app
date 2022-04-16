@@ -169,4 +169,4 @@ $form.on("submit", function(event) {
   });
 });
 
-module.exports = {}
+module.exports = liveChat;
