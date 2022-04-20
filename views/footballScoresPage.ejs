@@ -33,6 +33,7 @@
                             <% } else { %>
                                     - Away
                             <% } %>
+                            <%= team.teamScore %>
                             <img src="<%= team.teamLogo %>" alt="<%= team.name %> logo"
                             width="25"
                             height="25" />
@@ -45,6 +46,7 @@
                             <% } else { %>
                                     - Away
                             <% } %>
+                            <%= teams[team.teamId - 1].teamScore %>
                             <img src="<%= teams[team.teamId - 1].teamLogo %>" alt="<%= teams[team.teamId - 1].name %> logo"
                             width="25"
                             height="25" />
