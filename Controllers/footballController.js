@@ -6,39 +6,37 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 function loadInfo() {
     // Initializing requrest so that the call doesn't have to be made a lot
+    // Reinitialize this request within the loop, do this change once you make
+    // your change from XMLHttpRequest();
     const request = new XMLHttpRequest();
     let teams = [];
-    let teamsDone = [];
 
     for (let counter = 1; counter <= 32; counter++){
-        // If the team has already been done, skip it
-        if (!teamsDone.find(counter)){
-            // Tested, can insert id numbers instead of team abreviations, meaning can do 1-32
-            request.open('GET', `https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/teams/${counter}/schedule?seasontype=2`);
+        // Tested, can insert id numbers instead of team abreviations, meaning can do 1-32
+        request.open('GET', `https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/teams/${counter}/schedule?seasontype=2`);
 
-            // Gets info
-            request.onload = function getInfo() {
-                const jsonResponse = JSON.parse(request.responseText);
-                const team = {
-                    "teamId": jsonResponse?.team?.id,
-                    "teamName": jsonResponse?.team?.displayName,
-                    "teamLogo": jsonResponse?.team?.logo,
-                    // Use ? for safe transversal in case the data doesn't exist (bye week)
-                    // Can't get this to work yet
-                    "teamScore": jsonResponse.events[0].competitions[0].competitors[0].score.value,
-                    //"oppId": jsonResponse.events[0].competititons[0].competitors[0].score.value,
-                    //"homeAway": jsonResponse.team.events[0].competitions[0],
-                    //"oppWin": jsonResponse.team.events[0].competitions[0]
-                }
-
-                teams.push(team);
-                // Push the teams done
-                // teamsDone.push(jsonResponse.team.id);
-                // teamsDone.push(jsonResponse.events[0].competitions[0].competitors[0].id);
+        // Gets info
+        request.onload = function getInfo() {
+            const jsonResponse = JSON.parse(request.responseText);
+            const team = {
+            "teamId": jsonResponse?.team?.id,
+            "teamName": jsonResponse?.team?.displayName,
+                "teamLogo": jsonResponse?.team?.logo,
+                // Use ? for safe transversal in case the data doesn't exist (bye week)
+                // Can't get this to work yet
+                "teamScore": jsonResponse.events[0].competitions[0].competitors[0].score.value,
+                //"oppId": jsonResponse.events[0].competititons[0].competitors[0].score.value,
+                //"homeAway": jsonResponse.team.events[0].competitions[0],
+                //"oppWin": jsonResponse.team.events[0].competitions[0]
             }
 
-            request.send();
+            teams.push(team);
+            // Push the teams done
+            // teamsDone.push(jsonResponse.team.id);
+            // teamsDone.push(jsonResponse.events[0].competitions[0].competitors[0].id);
         }
+
+        request.send();
     }
 
     return teams;
@@ -79,7 +77,7 @@ function test() {
 
 function renderScores(req, res) {
     // change this line to either test or loadinfo
-    const teams = loadInfo();
+    const teams = test();
 
     res.render("footballScoresPage", {"teams": teams});
 }
