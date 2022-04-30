@@ -13,17 +13,29 @@ async function getTeam(counter) {
     // Send the request using returned URL
     const res = await fetch(getTeam(counter))
     
+    // Get the data and store it
     data = await res.json();
 
+    // Return the data
     return data;
 }
 
 async function getAllTeams() {
-    let teamArray = [];
+    // Create array for all teams
+    let teams = [];
 
+    // Store all teams info in the array
     for (i = 1; i <= 32; i++){
-        teamArray.push[getTeam(i)];
+        teams.push[getTeam(i)];
     }
 
-    return teamArray;
+    return teams;
+}
+
+async function getTeamInfoAtWeek(counter, week) {
+    // Get the team's data
+    const team = getTeam(counter);
+
+    // Get the team's data at that week
+    return teamAtWeek = team[week - 1];
 }
