@@ -1,19 +1,19 @@
 "use strict";
 
+import { response } from 'express';
+import fetch from 'node-fetch';
+
 const { arrayBuffer } = require("stream/consumers");
 
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+// Replace all XML with Fetch
 
-function loadInfo() {
-    // Initializing requrest so that the call doesn't have to be made a lot
-    // Reinitialize this request within the loop, do this change once you make
-    // your change from XMLHttpRequest();
-    const request = new XMLHttpRequest();
+async function loadInfo() {
     let teams = [];
 
     for (let counter = 1; counter <= 32; counter++){
         // Tested, can insert id numbers instead of team abreviations, meaning can do 1-32
-        request.open('GET', `https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/teams/${counter}/schedule?seasontype=2`);
+        const request = await fetch(`https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/teams/${counter}/schedule?seasontype=2`);
+        const data = await request.json(); // Stopped here <--
 
         // Gets info
         request.onload = function getInfo() {
