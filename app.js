@@ -38,6 +38,8 @@ const sessionConfig = {
 
 app.use(express.static(__dirname + '/public'));
 
+app.use(express.json({limit: '200kb'}))
+
 /*app.post("/api/footballScores", (req,res) => {
     loadInfo();
 })*/
@@ -46,7 +48,18 @@ app.set('view engine', 'ejs');
 
 // Load controllers
 const footballController = require('./Controllers/footballController');
+const userController     = require("./Controllers/userController")
+
+// Load Validators
+const userValidator = require("./Validators/userValidator");
+
+
+const { application } = require("express");
+
 
 app.get("/football/scores", footballController.renderScores);
+app.post("/api/user", userValidator.userValidator, userController.createNewUser)
+app.post("/api/login", userValidator.userValidator, userController.login)
+
 
 module.exports = app;
