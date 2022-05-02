@@ -41,25 +41,30 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.json({limit: '200kb'}))
 
 const footballModel = require("./Models/footballModels");
+const contentModel = require("./Models/contentModels");
 
+contentModel.storeContent();
 footballModel.populateDatabase();
 
 app.set('view engine', 'ejs');
 
 // Load controllers
-const footballController = require('./Controllers/footballController');
-const userController     = require("./Controllers/userController")
+const footballController = require("./Controllers/footballController");
+const userController     = require("./Controllers/userController");
+const contentController  = require("./Controllers/contentController");
 
 // Load Validators
 const userValidator = require("./Validators/userValidator");
 
-
 const { application } = require("express");
 
-
+// Homepage Endpoints
+app.get("/home", contentController.renderContent);
+// Football Endpoints
 app.get("/football/scores", footballController.renderScores);
 app.get("/football/scores/team/:team", footballController.renderTeam);
 app.get("/football/scores/:week", footballController.renderWeek);
+//
 app.post("/api/user", userValidator.userValidator, userController.createNewUser)
 app.post("/api/login", userValidator.userValidator, userController.login)
 
