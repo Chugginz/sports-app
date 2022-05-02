@@ -31,7 +31,7 @@ function test() {
     }
 
     return teams;
-}
+    }
 
 function renderScores(req, res) {
     // change this line to either test or loadinfo

@@ -5,7 +5,14 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 CREATE TABLE IF NOT EXISTS Football (
-    teamid          TEXT PRIMARY KEY,
-    teamname        TEXT UNIQUE NOT NULL,
-    teamlogo        TEXT UNIQUE NOT NULL
+    teamid          TEXT NOT NULL,
+    teamname        TEXT NOT NULL,
+    logo            TEXT NOT NULL,
+    record          TEXT NOT NULL,
+    week            TEXT NOT NULL,
+    score           TEXT NOT NULL,
+    winStatus       TEXT NOT NULL,
+    visitStatus     TEXT NOT NULL,
+    opponentid      INTEGER NOT NULL,
+    avoidreapeats   INTEGER UNIQUE NOT NULL
 )
