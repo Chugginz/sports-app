@@ -25,7 +25,6 @@
   "description": "Web Dev Project",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Chugginz/sports-app.git"
