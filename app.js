@@ -40,9 +40,9 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.json({limit: '200kb'}))
 
-/*app.post("/api/footballScores", (req,res) => {
-    loadInfo();
-})*/
+const footballModel = require("./Models/footballModels");
+
+footballModel.populateDatabase();
 
 app.set('view engine', 'ejs');
 
@@ -58,6 +58,9 @@ const { application } = require("express");
 
 
 app.get("/football/scores", footballController.renderScores);
+app.get("/football/scores/team/:team", footballController.renderTeam);
+app.get("/football/scores/:week", footballController.renderWeek);
+//app.get("/team/:teamname", footballController.renderTeam);
 app.post("/api/user", userValidator.userValidator, userController.createNewUser)
 app.post("/api/login", userValidator.userValidator, userController.login)
 
