@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Scores</title>
+    <title>Team Scores</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
 <body>
@@ -110,54 +110,52 @@
             });
         </script>
     </div>
-    <ul class="scoresContainer">
+    <ul class="weeksContainer">
         <% for ( const team of teams ) { %>
-            <% if (team.teamid > team.opponentid){ %>
-                <% if (team.opponentid != 12 && team.opponentid != 24){ %>
-                    <a href="/team/<%= team.name %>" class="team">
-                        <li>
-                            <div class="info">
-                                <p>
-                                    <img src="<%= team.logo %>" alt="<%= team.name %> logo"
-                                    width="25"
-                                    height="25" />
-                                    <%= team.teamname %>
-                                    (
-                                    <%= team.record %>
-                                    )
-                                    <% if (team.visitStatus === "home") { %>
-                                        - At Home
-                                    <% } else { %>
-                                            - Away
-                                    <% } %>
-                                    <%= team.score %>
-                                </p>
-                                <p>
-                                    vs. 
-                                    <% if (team.opponentid != 12 && team.opponentid != 24){ %>
-                                        <% for (let i = 0; i < teams.length; i++){ %>
-                                            <% if (team.opponentid == teams[i].teamid){ %>
-                                                <img src="<%= teams[i].logo %>" alt="<%= team.name %> logo"
-                                                width="25"
-                                                height="25" />
-                                                <%= teams[i].teamname %>
-                                                (
-                                                <%= teams[i].record %>
-                                                )
-                                                <% if (teams[i].visitStatus === "home") { %>
-                                                    - At Home
-                                                <% } else { %>
-                                                        - Away
-                                                <% } %>
-                                                <%= teams[i].score %>
-                                            <% } %>
+            <% if (team.teamid == teams[0].teamid && team.opponentid != 12 && team.opponentid != 24){ %>
+                <a href="/football/game/<%= team.teamname + team.week%>" class="team">
+                    <li>
+                        <div class="info">
+                            <p>
+                                <%= team.week %>
+                            </p>
+                            <p>
+                                <img src="<%= team.logo %>" alt="<%= team.teamname %> logo"
+                                width="25"
+                                height="25" />
+                                <%= team.teamname %>
+                                (
+                                <%= team.record %>
+                                )
+                                <% if (team.visitStatus === "home") { %>
+                                    - At Home
+                                <% } else { %>
+                                        - Away
+                                <% } %>
+                                <%= team.score %>
+                            </p>
+                            <p>
+                                vs. 
+                                <% for (let i = 12; i < teams.length; i++){ %>
+                                    <% if (team.opponentid == teams[i].teamid && team.week == teams[i].week){ %>
+                                        <img src="<%= teams[i].logo %>" alt="<%= teams[i].teamname %> logo"
+                                        width="25"
+                                        height="25" />
+                                        <%= teams[i].teamname %>
+                                        (
+                                        <%= teams[i].record %>
+                                        )
+                                        <% if (teams[i].visitStatus === "home") { %>
+                                            - At Home
+                                        <% } else { %>
+                                                - Away
                                         <% } %>
+                                        <%= teams[i].score %>
                                     <% } %>
-                                </p>
-                            </div>
-                        </li>
-                    </a>
-                <% } %>
+                                <% } %>
+                            </p>
+                        </div>
+                    </li>
             <% } %>
         <% } %>
     </ul>

@@ -1,45 +1,31 @@
 "use strict";
 
-function test() {
-    const teams = [];
-    
-    // Populates an array to test the ejs
-    for (let counter = 1; counter <= 16; counter++){
-        let team = {
-            "teamId": "2",
-            "teamName": "Dal Cowboys",
-            "teamLogo": "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
-            "teamScore": "28",
-            "oppId": 17,
-            "homeAway": "Home",
-            "oppWin": "Win"
-            }
-        
-        teams.push(team);
-
-        team = {
-            "teamId": "1",
-            "teamName": "Atl Falcons",
-            "teamLogo": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
-            "teamScore": "3",
-            "oppId": 1,
-            "homeAway": "Away",
-            "oppWin": "Loss"
-        }
-
-        teams.push(team);
-    }
-
-    return teams;
-    }
+const footballModel = require("../Models/footballModels");
 
 function renderScores(req, res) {
-    // change this line to either test or loadinfo
-    const teams = test();
+    const teams = footballModel.getTeamsAtWeek("Week 1");
 
     res.render("footballScoresPage", {"teams": teams});
 }
 
+function renderWeek(req, res) {
+    const week = req.params.week;
+    const teams = footballModel.getTeamsAtWeek(week);
+
+    res.render("footballScoresPage", {"teams": teams});
+}
+
+function renderTeam(req, res){
+    const team = req.params.team;
+    let teams = footballModel.getTeam(team);
+    const opps = footballModel.getOpponents(teams[0].teamid);
+    teams = teams.concat(opps);
+
+    res.render("footballTeamScores", {"teams": teams})
+}
+
 module.exports = {
     renderScores,
+    renderWeek,
+    renderTeam
 }

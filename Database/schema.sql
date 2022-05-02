@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS Football (
     winStatus       TEXT NOT NULL,
     visitStatus     TEXT NOT NULL,
     opponentid      INTEGER NOT NULL,
-    avoidreapeats   INTEGER UNIQUE NOT NULL
+    CONSTRAINT teamInfo UNIQUE(teamname, week)
 )
