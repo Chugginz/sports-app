@@ -1,6 +1,5 @@
 "use strict";
 
-const res = require("express/lib/response");
 const db = require("./db");
 const fetch = require("node-fetch");
 

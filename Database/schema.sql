@@ -15,4 +15,11 @@ CREATE TABLE IF NOT EXISTS Football (
     visitStatus     TEXT NOT NULL,
     opponentid      INTEGER NOT NULL,
     CONSTRAINT teamInfo UNIQUE(teamname, week)
+);
+
+CREATE TABLE IF NOT EXISTS News (
+    contentid       TEXT PRIMARY KEY,
+    img             TEXT NOT NULL,
+    link            TEXT NOT NULL,
+    headline        TEXT NOT NULL
 )
