@@ -15,7 +15,7 @@ function makeValidator (schema) {
             return res.status(400).json({errorMessages});
         } 
 
-        req[prop] = value;
+        req.body = value;
         
         next();
     }

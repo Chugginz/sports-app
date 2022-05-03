@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in to Sports!</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <title>Register for Sports!</title>
 </head>
 <body>
-    <form action="/api/login" method="post">
+    <form action="/api/user" method="post">
         <div>
             <label for="username">Username:</label>
             <input type="text" name="username" id="username">
@@ -17,7 +16,10 @@
             <label for="password">Password:</label>
             <input type="password" name="password" id="password">
         </div>
-       
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="confirmPassword">
+        </div>
         <button>Submit</button>
     </form>
 </body>
