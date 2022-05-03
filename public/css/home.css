@@ -7,7 +7,36 @@
 	padding: 0%;
 }
 
+p {
+	text-align: justify;
+}
+
 img {
-    max-height: 100%;
-    max-width: 40%;
+	float: left;
+	border-style: solid;
+	border-color: black;
+	margin-bottom: .10%;
+}
+
+p.Welcome {
+	display: inline;
+	font-size: 40px;
+	color: rgb(255, 255, 255);
+	background-color: black;
+	flex-wrap: wrap;
+	border-style: solid;
+	border-color: black;
+	margin-bottom: 5%;
+}
+
+li {
+	border-style: solid;
+	border-color: black;
+	color: black;
+	clear: both;
+	position: relative;
+}
+
+#article {
+	display: inline-block;
 }
