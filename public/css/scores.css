@@ -1,0 +1,11 @@
+#Wrapper {
+    display: flex;
+}
+
+#Week {
+    flex: .15;
+}
+
+#Team {
+    flex: 1;
+}
