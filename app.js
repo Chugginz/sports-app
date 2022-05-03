@@ -45,6 +45,21 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.json({limit: '200kb'}))
 
+// Fix CSP
+/*
+app.use(
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                "img-src": ["'self'", "a2.espncdn.com"], // Add domains to this array
+            },
+        },
+        crossOriginResourcePolicy: {
+            policy: "cross-origin"
+        }
+    })
+);*/
+
 // Load Error Handlers
 const {notFoundHandler, productionErrorHandler, catchAsyncErrors} = require("./utils/errorHandlers");
 

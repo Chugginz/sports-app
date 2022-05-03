@@ -7,9 +7,6 @@
     <title>Home</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/home.css">
-    <style>
-        div.article {border-style: solid;}
-    </style>
 </head>
 <body>
     <div class="nav">
@@ -21,16 +18,28 @@
         <a href="/profile.html">Profile</a>
     </div>
     <ul class="contentContainer">
+        <p class="Welcome">
+            What's Happening In The World Of Sports:
+        </p>
         <% for ( const content of contents ) { %>
             <div class="article">
                 <a href="<%= content.link %>" class="content">
                     <li>
-                        <p>
-                            <img src="<%= content.img %>" alt="<%= content.contentid %> logo"
+                        <img src="<%= content.img %>" alt="<%= content.contentid %> logo"
                             width="250"
-                            height="250"/>
-                            <%= content.headline %>
-                        </p>
+                            height="250"
+                            />
+                        <div class="contentText">
+                            <p>
+                                <%= content.headline %>
+                            </p>
+                            <p>
+                                <%= content.articleDesc %>
+                            </p>
+                            <p>
+                                Want to learn more? Click me!
+                            </p>
+                        </div>
                     </li>
                 </a>
             </div>

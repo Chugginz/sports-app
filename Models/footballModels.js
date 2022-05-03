@@ -109,7 +109,7 @@ async function populateDatabase() {
                         // Initialize all needed values regarding the team
                         const teamid = competitor?.id;
                         const teamname = currentTeam?.team?.displayName;
-                        const logo = currentTeam?.team?.logo;
+                        const logo = "/media/images/" + currentTeam?.team?.abbreviation + ".png";
                         const record = competitor?.record[0]?.displayValue;
                         const week = currentTeam?.events[j]?.week?.text;
                         const score = competitor?.score?.displayValue;
@@ -143,7 +143,7 @@ async function populateDatabase() {
                         // Initialize all needed values regarding the team
                         const teamid = competitor?.id;
                         const teamname = currentTeam?.team?.displayName;
-                        const logo = currentTeam?.team?.logo;
+                        const logo = "/media/images/" + currentTeam?.team?.abbreviation + ".png";
                         const record = competitor?.record[0]?.displayValue;
                         const week = currentTeam?.events[j]?.week?.text;
                         const score = competitor?.score?.displayValue;
