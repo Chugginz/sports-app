@@ -6,3 +6,6 @@ node_modules
 
 # Redis stuff
 dump.rdb
+
+# Database
+sports_app.db
