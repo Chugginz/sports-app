@@ -9,3 +9,21 @@
 #Team {
     flex: 1;
 }
+
+.weeksContainer {
+	--c: #{mix(#fff, darkorange, 25%)};
+	--s0: calc(#{$o} + #{$l});
+	--s1: calc(#{$o} + #{$l} + #{$p});
+	place-self: center;
+	position: relative;
+	padding: 0%;
+}
+
+.scoresContainer {
+	--c: #{mix(#fff, darkorange, 25%)};
+	--s0: calc(#{$o} + #{$l});
+	--s1: calc(#{$o} + #{$l} + #{$p});
+	place-self: center;
+	position: relative;
+	padding: 0%;
+}

@@ -7,6 +7,10 @@
     <title>Team Scores</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/scores.css">
+    <script src="/js/football.js" defer></script>
+    <style>
+        div.info {border-style: solid;}
+    </style>
 </head>
 <body>
     <div class="nav">
@@ -48,18 +52,6 @@
                 </select>
                 <input type="submit" value="Submit" />
             </form>
-            <script>
-                const form = document.getElementById("weekChoice");
-
-                form.addEventListener("submit", (event) => {
-                    const slct = document.getElementById("week");
-                    const partURL = slct.options[slct.selectedIndex].value;
-                    console.log(partURL);
-                    const src = "/football/scores/" + partURL;
-
-                    form.action = src;
-                });
-            </script>
         </div>
         <div id="Team">
             <p>Sort By Team:</p>
@@ -99,67 +91,62 @@
                 </select>
                 <input type="submit" value="Submit" />
             </form>
-            <script>
-                const form2 = document.getElementById("teamChoice");
-
-                form2.addEventListener("submit", (event) => {
-                    const slct = document.getElementById("team");
-                    const partURL = slct.options[slct.selectedIndex].value;
-                    console.log(partURL);
-                    const src = "/football/scores/team/" + partURL;
-
-                    form2.action = src;
-                });
-            </script>
         </div>
     </div>
     <ul class="weeksContainer">
         <% for ( const team of teams ) { %>
             <% if (team.teamid == teams[0].teamid && team.opponentid != 12 && team.opponentid != 24){ %>
-                <a href="/football/game/<%= team.teamname + team.week%>" class="team">
-                    <li>
-                        <div class="info">
-                            <p>
-                                <%= team.week %>
-                            </p>
-                            <p>
-                                <img src="<%= team.logo %>" alt="<%= team.teamname %> logo"
-                                width="25"
-                                height="25" />
-                                <%= team.teamname %>
-                                (
-                                <%= team.record %>
-                                )
-                                <% if (team.visitStatus === "home") { %>
-                                    - At Home
-                                <% } else { %>
-                                        - Away
-                                <% } %>
-                                <%= team.score %>
-                            </p>
-                            <p>
-                                vs. 
-                                <% for (let i = 12; i < teams.length; i++){ %>
-                                    <% if (team.opponentid == teams[i].teamid && team.week == teams[i].week){ %>
-                                        <img src="<%= teams[i].logo %>" alt="<%= teams[i].teamname %> logo"
-                                        width="25"
-                                        height="25" />
-                                        <%= teams[i].teamname %>
-                                        (
-                                        <%= teams[i].record %>
-                                        )
-                                        <% if (teams[i].visitStatus === "home") { %>
-                                            - At Home
-                                        <% } else { %>
-                                                - Away
-                                        <% } %>
-                                        <%= teams[i].score %>
+                <li>
+                    <div class="info">
+                        <p>
+                            <%= team.week %>
+                        </p>
+                        <p>
+                            <img src="<%= team.logo %>" alt="<%= team.teamname %> logo"
+                            width="25"
+                            height="25" />
+                            <%= team.teamname %>
+                            (
+                            <%= team.record %>
+                            )
+                            <% if (team.visitStatus === "home") { %>
+                                - At Home
+                            <% } else { %>
+                                    - Away
+                            <% } %>
+                            <%= team.score %>
+                            <% if (team.winStatus == "true") { %>
+                                - W
+                           <% } else { %>
+                               - L
+                           <% } %>
+                        </p>
+                        <p>
+                            <% for (let i = 12; i < teams.length; i++){ %>
+                                <% if (team.opponentid == teams[i].teamid && team.week == teams[i].week){ %>
+                                    <img src="<%= teams[i].logo %>" alt="<%= teams[i].teamname %> logo"
+                                    width="25"
+                                    height="25" />
+                                    <%= teams[i].teamname %>
+                                    (
+                                    <%= teams[i].record %>
+                                    )
+                                    <% if (teams[i].visitStatus === "home") { %>
+                                        - At Home
+                                    <% } else { %>
+                                            - Away
                                     <% } %>
+                                    <%= teams[i].score %>
+                                    <% if (teams[i].winStatus == "true") { %>
+                                        - W
+                                   <% } else { %>
+                                       - L
+                                   <% } %>
                                 <% } %>
-                            </p>
-                        </div>
-                    </li>
-                </a>
+                            <% } %>
+                        </p>
+                    </div>
+                </li>
             <% } %>
         <% } %>
     </ul>
