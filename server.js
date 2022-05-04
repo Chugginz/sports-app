@@ -8,6 +8,8 @@ const isDevelopement = !process.env.NODE_ENV || process.env.NODE_ENV === "develo
 // Initializing variable for if deploying in production
 const isProduction = process.env.NODE_ENV === "production";
 
+
+
 app.listen(process.env.PORT, () => {
 	// Colorize output with ANSI escape codes
 	// https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
