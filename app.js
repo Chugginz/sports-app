@@ -46,7 +46,6 @@ const {notFoundHandler, productionErrorHandler, catchAsyncErrors} = require("./u
 
 // Validators
 const {userValidator} = require("./Validators/userValidator");
-const {validateTeam, validateWeek} = require("./Validators/footballValidator");
 const {validateTeam, validateWeek} = require("./Validators/basketballValidator");
 
 // Models
@@ -88,7 +87,7 @@ app.get("/basketball/scores", basketballController.renderScores);
 app.get("/basketball/scores/team/:team", basketballController.renderTeam);
 app.get("/basketball/scores/:week", basketballController.renderWeek);
 // Login Endpoints
-app.post("/api/user", userValidator, userController.createNewUser)
+app.post("/api/register", userValidator, userController.createNewUser)
 app.post("/api/login", userValidator, userController.login)
 
 //Error Handlers

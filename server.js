@@ -3,11 +3,31 @@ require("dotenv").config();
 
 // Initliaze app
 const app = require("./app");
+const express = require("express");
 // Initializing variable for if deploying in development
 const isDevelopement = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 // Initializing variable for if deploying in production
 const isProduction = process.env.NODE_ENV === "production";
 
+const http = require('http');
+const WebSocket = require('ws');
+const server = http.createServer(express);
+const wss = new WebSocket.Server({server})
+const port = 6060;
+
+wss.on('connection', function connection(ws) {
+	ws.on('message', function incoming(data) {
+		wss.clients.forEach(function each(client) {
+			if (client !== ws && client.readyState === WebSocket.OPEN) {
+				client.send(data);
+			}
+		})
+	})
+})
+
+server.listen(port, () => {
+	console.log("Websocket is listening")
+});
 
 app.listen(process.env.PORT, () => {
 	// Colorize output with ANSI escape codes

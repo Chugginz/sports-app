@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baseball Chat</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <script src="/js/chat.js"></script>
 </head>
 <body>
     <div class="nav">
@@ -19,39 +20,9 @@
       <div class="baseballNav">
           <a class="baseball" href="/baseball/baseball.html">About Baseball</a>
           <a href="/baseball/scores">Check Scores</a>
-          <a href="/baseball/baLiveChat/liveChatEntry.html">Live Chat</a>
+          <a href="/baseball/baLiveChat.html">Live Chat</a>
+      <pre id="messages" style="height: 400px; overflow: scroll"></pre>
+      <input type="text" id="messageBox" placeholder="Type your message here" style="display: block; width: 100%; margin-bottom: 10px; padding: 10px;" />
+      <button id="send" title="Send Message" style="width: 100%; height: 30px;">Send Message</button>
       </div>
 
-    <!-- Code Designer is Dev.to https://dev.to/bhupendra1011/build-a-chat-application-in-javascript-194p -->
-    
-    <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 well">
-              <!-- messages would be shown here -->
-            </ul>
-  
-            <form id="messageForm">
-              <div class="form-group">
-                <i class="" id="icon-type"></i>
-                <p class="help-block typing"></p>
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-comment"></i>
-                  </span>
-                  <input autofocus class="form-control" id="messagebox" name="message" type="text" value=""/>
-                </div>
-              </div>
-  
-              <div class="form-group">
-                <input class="btn btn-default btn-block" type="submit"/>
-              </div>
-  
-            </form>
-  
-          </div>
-  
-        </div>
-  
-      </div>
-</body>
-</html>

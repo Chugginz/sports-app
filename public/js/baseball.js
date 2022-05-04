@@ -22,5 +22,5 @@ form2.addEventListener("submit", (event) => {
 
     const src = "/baseball/scores/team/" + partURL;
 
-    form2.action = src;s
+    form2.action = src;
 });
