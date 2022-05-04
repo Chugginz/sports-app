@@ -57,20 +57,26 @@ const {notFoundHandler, productionErrorHandler, catchAsyncErrors} = require("./u
 
 // Validators
 const {userValidator} = require("./Validators/userValidator");
-const {validateTeam, validateWeek} = require("./Validators/footballValidator");
+const {validateTeam, validateWeek} = require("./Validators/basketballValidator");
 
 // Models
 const footballModel = require("./Models/footballModels");
+const baseballModel = require("./Models/baseballModels");
+const basketballModel = require("./Models/basketballModels");
 const contentModel = require("./Models/contentModels");
 
 // Controllers
 const footballController = require("./Controllers/footballController");
+const baseballController = require("./Controllers/baseballController");
+const basketballController = require("./Controllers/basketballController");
 const userController     = require("./Controllers/userController");
 const contentController  = require("./Controllers/contentController");
 
 // Database Population
 catchAsyncErrors(contentModel.storeContent()); 
 catchAsyncErrors(footballModel.populateDatabase());
+catchAsyncErrors(baseballModel.populateDatabase());
+catchAsyncErrors(basketballModel.populateDatabase());
 
 // Global Middleware
 app.set('view engine', 'ejs');
@@ -81,10 +87,18 @@ app.use(express.json({limit: '200kb'}))
 app.get("/home", contentController.renderContent);
 // Football Endpoints
 app.get("/football/scores", footballController.renderScores);
-app.get("/football/scores/team/:team", validateTeam ,footballController.renderTeam);
-app.get("/football/scores/:week", validateWeek ,footballController.renderWeek);
+app.get("/football/scores/team/:team", footballController.renderTeam);
+app.get("/football/scores/:week", footballController.renderWeek);
+//baseball Endpoints
+app.get("/baseball/scores", baseballController.renderScores);
+app.get("/baseball/scores/team/:team", baseballController.renderTeam);
+app.get("/baseball/scores/:week", baseballController.renderWeek);
+//basketball Endpoints
+app.get("/basketball/scores", basketballController.renderScores);
+app.get("/basketball/scores/team/:team", basketballController.renderTeam);
+app.get("/basketball/scores/:week", basketballController.renderWeek);
 // Login Endpoints
-app.post("/api/user", userValidator, userController.createNewUser)
+app.post("/api/register", userValidator, userController.createNewUser)
 app.post("/api/login", userValidator, userController.login)
 
 //Error Handlers
