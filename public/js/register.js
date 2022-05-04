@@ -20,7 +20,7 @@ async function submitUserForm (event) {
             "body": JSON.stringify(body)
         });
         if (response.ok) {     
-            window.location.href="/"; 
+            window.location.href="/public/index.html"; 
 
         } else if (response.status === 400) {  
             const data = await response.json();
