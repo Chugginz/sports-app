@@ -7,7 +7,7 @@
     <title>Team Scores</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/scores.css">
-    <script src="/js/football.js" defer></script>
+    <script src="/js/baseball.js" defer></script>
     <style>
         div.info {border-style: solid;}
     </style>
@@ -21,17 +21,17 @@
         <a href="/messaging/messages.html">Messages</a>
         <a href="/profile.html">Profile</a>
     </div>
-    <div class="footballNav">
-        <a class="football" href="/football/aboutFootball.html">About Football</a>
-        <a href="/football/scores">Check Scores</a>
-        <a href="/football/fbLiveChat/liveChatEntry.html">Live Chat</a>
+    <div class="baseballNav">
+        <a class="baseball" href="/baseball/aboutBaseball.html">About Baseball</a>
+        <a href="/baseball/scores">Check Scores</a>
+        <a href="/baseball/baLiveChat/liveChatEntry.html">Live Chat</a>
     </div>
     <div id="Wrapper">
         <div id="Week">
             <p>Sort By Week:</p>
-            <form id="weekChoice">
+            <form id="weekChoiceB">
                 <label for="week"></label>
-                <select name="weeks" id="week">
+                <select name="weeks" id="weekB">
                     <option value="Week 1">Week 1</option>
                     <option value="Week 2">Week 2</option>
                     <option value="Week 3">Week 3</option>
@@ -49,45 +49,54 @@
                     <option value="Week 15">Week 15</option>
                     <option value="Week 16">Week 16</option>
                     <option value="Week 17">Week 17</option>
+                    <option value="Week 18">Week 18</option>
+                    <option value="Week 19">Week 19</option>
+                    <option value="Week 20">Week 20</option>
+                    <option value="Week 21">Week 21</option>
+                    <option value="Week 22">Week 22</option>
+                    <option value="Week 23">Week 23</option>
+                    <option value="Week 24">Week 24</option>
+                    <option value="Week 25">Week 25</option>
+                    <option value="Week 26">Week 26</option>
                 </select>
                 <input type="submit" value="Submit" />
             </form>
         </div>
         <div id="Team">
             <p>Sort By Team:</p>
-            <form id="teamChoice">
-                <label for="team"></label>
-                <select name="team" id="team">
-                    <option value="25">San Francisco 49ers</option>
-                    <option value="3">Chicago Bears</option>
-                    <option value="4">Cincinnati Bengals</option>
-                    <option value="2">Buffalo Bills</option>
-                    <option value="7">Denver Broncos</option>
-                    <option value="5">Cleveland Browns</option>
-                    <option value="27">Tampa Bay Bucaneers</option>
-                    <option value="22">Arizona Cardinals</option>
-                    <option value="11">Indianapolis Colts</option>
-                    <option value="28">Washington Commanders</option>
-                    <option value="6">Dallas Cowboys</option>
-                    <option value="15">Miami Dolphins</option>
-                    <option value="21">Philadelphia Eagles</option>
-                    <option value="1">Atlanta Falcons</option>
-                    <option value="19">New York Giants</option>
-                    <option value="30">Jacksonville Jaguars</option>
-                    <option value="20">New York Jets</option>
-                    <option value="8">Detroit Lions</option>
-                    <option value="9">Green Bay Packers</option>
-                    <option value="29">Carolina Panthers</option>
-                    <option value="17">New England Patriots</option>
-                    <option value="13">Las Vegas Raiders</option>
-                    <option value="14">L.A. Rams</option>
-                    <option value="33">Baltimore Ravens</option>
-                    <option value="18">New Orleans Saints</option>
-                    <option value="26">Seattle Seahawks</option>
-                    <option value="23">Pittsburgh Steelers</option>
-                    <option value="34">Houston Texans</option>
-                    <option value="10">Tennessee Titans</option>
-                    <option value="16">Minnesota Vikings</option>
+            <form id="teamChoiceB">
+                <label for="teamB"></label>
+                <select name="teamB" id="teamB">
+                    <option value="1">Baltimore Orioles</option>
+                    <option value="2">Boston Red Sox</option>
+                    <option value="3">Los Angeles Angels</option>
+                    <option value="4">Chicago White Sox</option>
+                    <option value="5">Cleveland Guardians</option> 
+                    <option value="6">Detroit Tigers</option> 
+                    <option value="7">Kansas City Royals</option> 
+                    <option value="8">Milwaukee Brewers</option>
+                    <option value="9">Minnesota Twins</option> 
+                    <option value="10">New York Yankees</option> 
+                    <option value="11">Oakland Athletics</option>
+                    <option value="12">Seattle Mariners</option>
+                    <option value="13">Texas Rangers</option>
+                    <option value="14">Toronto Blue Jays</option>
+                    <option value="15">Atlanta Braves</option>
+                    <option value="16">Chicago Cubs</option>
+                    <option value="17">Cincinnati Reds</option>
+                    <option value="18">Houston Astros</option>
+                    <option value="19">Los Angeles Dodgers</option>
+                    <option value="20">Washington Nationals</option>
+                    <option value="21">New York Mets</option>
+                    <option value="22">Philadelphia Phillies</option>
+                    <option value="23">Pittsburgh Pirates</option>
+                    <option value="24">St. Louis Cardinals</option>
+                    <option value="25">San Diego Padres</option>
+                    <option value="26">San Francisco Giants</option>
+                    <option value="27">Colorado Rockies</option>
+                    <option value="28">Miami Marlins</option>
+                    <option value="29">Arizona Diamondbacks</option>
+                    <option value="30">Tampa Bay Rays</option> 
                 </select>
                 <input type="submit" value="Submit" />
             </form>
@@ -95,7 +104,7 @@
     </div>
     <ul class="weeksContainer">
         <% for ( const team of teams ) { %>
-            <% if (team.teamid == teams[0].teamid && team.opponentid != 12 && team.opponentid != 24){ %>
+            <% if (team.teamid == teams[0].teamid){ %>
                 <li>
                     <div class="info">
                         <p>
@@ -104,8 +113,7 @@
                         <p>
                             <img src="<%= team.logo %>" alt="<%= team.teamname %> logo"
                             width="25"
-                            height="25" 
-                            crossorigin/>
+                            height="25" />
                             <%= team.teamname %>
                             (
                             <%= team.record %>
@@ -127,8 +135,7 @@
                                 <% if (team.opponentid == teams[i].teamid && team.week == teams[i].week){ %>
                                     <img src="<%= teams[i].logo %>" alt="<%= teams[i].teamname %> logo"
                                     width="25"
-                                    height="25"
-                                    crossorigin/>
+                                    height="25" />
                                     <%= teams[i].teamname %>
                                     (
                                     <%= teams[i].record %>

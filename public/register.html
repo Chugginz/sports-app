@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register her to make an account</title>
+    <title>Register here to make an account</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
 <body>
     <form action="/api/register" method="post">
         <div>
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" required>
         </div>
         <div>
             <label for="password">Password:</label>
@@ -21,7 +21,10 @@
             <label for="confirmPassword">Confirm Password:</label>
             <input type="password" name="confirmPassword" id="confirmPassword">
         </div>
-        <button>Register</button>
+        <button type="submit">Register</button>
     </form>
+    <div class="comntainer signin">
+        <p>Already have an account? <a href="/public/login.html">Sign in</a>.</p>
+    </div>
 </body>
 </html>
