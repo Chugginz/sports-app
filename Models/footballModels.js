@@ -94,7 +94,7 @@ async function populateDatabase() {
             // Initialize the current team
             const currentTeam = teams[i];
 
-            if (i != 11 && i != 23 && i != 30 && i != 31){
+            if (currentTeam?.events?.length > 1){
                 // For each week, iterate through each one
                 for (let j = 0; j < 16; j++){
                     // Set the week
