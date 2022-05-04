@@ -16,5 +16,5 @@ const userSchema = joi.object({
 const userValidator = makeValidator(userSchema);
 
 module.exports = {
-    userValidator,
+    userValidator
 }
