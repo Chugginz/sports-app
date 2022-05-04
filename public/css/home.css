@@ -1,0 +1,42 @@
+.contentContainer {
+	--c: #{mix(#fff, darkorange, 25%)};
+	--s0: calc(#{$o} + #{$l});
+	--s1: calc(#{$o} + #{$l} + #{$p});
+	place-self: center;
+	position: relative;
+	padding: 0%;
+}
+
+p {
+	text-align: justify;
+}
+
+img {
+	float: left;
+	border-style: solid;
+	border-color: black;
+	margin-bottom: .10%;
+}
+
+p.Welcome {
+	display: inline;
+	font-size: 40px;
+	color: rgb(255, 255, 255);
+	background-color: black;
+	flex-wrap: wrap;
+	border-style: solid;
+	border-color: black;
+	margin-bottom: 5%;
+}
+
+li {
+	border-style: solid;
+	border-color: black;
+	color: black;
+	clear: both;
+	position: relative;
+}
+
+#article {
+	display: inline-block;
+}

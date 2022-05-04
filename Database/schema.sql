@@ -34,5 +34,6 @@ CREATE TABLE IF NOT EXISTS News (
     contentid       TEXT PRIMARY KEY,
     img             TEXT NOT NULL,
     link            TEXT NOT NULL,
-    headline        TEXT NOT NULL
+    headline        TEXT NOT NULL,
+    articleDesc     TEXT NOT NULL
 )
