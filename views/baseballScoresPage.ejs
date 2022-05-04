@@ -17,21 +17,21 @@
         <a class="active" href="/home">Home</a>
         <a href="/football/aboutFootball.html">Football</a>
         <a href="/basketball/basketball.html">Basketball</a>
-        <a href="baseball/aboutBaseball.html">Baseball</a>
+        <a href="/baseball/aboutBaseball.html">Baseball</a>
         <a href="/messaging/messages.html">Messages</a>
         <a href="/profile.html">Profile</a>
     </div>
     <div class="baseballNav">
-        <a class="baseball" href="baseball/aboutBaseball.html">About Baseball</a>
+        <a class="baseball" href="/baseball/aboutBaseball.html">About Baseball</a>
         <a href="/baseball/scores">Check Scores</a>
-        <a href="baseball/baLiveChat/liveChatEntry.html">Live Chat</a>
+        <a href="/baseball/baLiveChat/liveChatEntry.html">Live Chat</a>
     </div>
     <div id="Wrapper">
         <div id="Week">
             <p>Sort By Week:</p>
-            <form id="weekChoice">
+            <form id="weekChoiceB">
                 <label for="week"></label>
-                <select name="weeks" id="week">
+                <select name="weeks" id="weekB">
                     <option value="Week 1">Week 1</option>
                     <option value="Week 2">Week 2</option>
                     <option value="Week 3">Week 3</option>
@@ -49,15 +49,24 @@
                     <option value="Week 15">Week 15</option>
                     <option value="Week 16">Week 16</option>
                     <option value="Week 17">Week 17</option>
+                    <option value="Week 18">Week 15</option>
+                    <option value="Week 19">Week 16</option>
+                    <option value="Week 20">Week 17</option>
+                    <option value="Week 21">Week 21</option>
+                    <option value="Week 22">Week 22</option>
+                    <option value="Week 23">Week 23</option>
+                    <option value="Week 24">Week 24</option>
+                    <option value="Week 25">Week 25</option>
+                    <option value="Week 26">Week 26</option>
                 </select>
                 <input type="submit" value="Submit" />
             </form>
         </div>
         <div id="Team">
             <p>Sort By Team:</p>
-            <form id="teamChoice">
+            <form id="teamChoiceB">
                 <label for="team"></label>
-                <select name="team" id="team">
+                <select name="team" id="teamB">
                     <option value="1">Baltimore Orioles</option>
                     <option value="2">Boston Red Sox</option>
                     <option value="3">Los Angeles Angels</option>
@@ -96,7 +105,6 @@
     <ul class="scoresContainer">
         <% for ( const team of teams ) { %>
             <% if (team.teamid > team.opponentid){ %>
-                <% if (team.opponentid != 12 && team.opponentid != 24){ %>
                     <li>
                         <div class="info">
                             <p>
@@ -120,34 +128,31 @@
                                 <% } %>
                             </p>
                             <p>
-                                <% if (team.opponentid != 12 && team.opponentid != 24){ %>
-                                    <% for (let i = 0; i < teams.length; i++){ %>
-                                        <% if (team.opponentid == teams[i].teamid){ %>
-                                            <img src="<%= teams[i].logo %>" alt="<%= team.name %> logo"
-                                            width="25"
-                                            height="25" />
-                                            <%= teams[i].teamname %>
-                                            (
-                                            <%= teams[i].record %>
-                                            )
-                                            <% if (teams[i].visitStatus === "home") { %>
-                                                - At Home
-                                            <% } else { %>
-                                                    - Away
-                                            <% } %>
-                                            <%= teams[i].score %>
-                                            <% if (teams[i].winStatus == "true") { %>
-                                                 - W
-                                            <% } else { %>
-                                                - L
-                                            <% } %>
+                                <% for (let i = 0; i < teams.length; i++){ %>
+                                    <% if (team.opponentid == teams[i].teamid){ %>
+                                        <img src="<%= teams[i].logo %>" alt="<%= team.name %> logo"
+                                        width="25"
+                                        height="25" />
+                                        <%= teams[i].teamname %>
+                                        (
+                                        <%= teams[i].record %>
+                                        )
+                                        <% if (teams[i].visitStatus === "home") { %>
+                                            - At Home
+                                        <% } else { %>
+                                                - Away
+                                        <% } %>
+                                        <%= teams[i].score %>
+                                        <% if (teams[i].winStatus == "true") { %>
+                                            - W
+                                        <% } else { %>
+                                            - L
                                         <% } %>
                                     <% } %>
                                 <% } %>
                             </p>
                         </div>
                     </li>
-                <% } %>
             <% } %>
         <% } %>
     </ul>

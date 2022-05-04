@@ -62,6 +62,7 @@ const contentController  = require("./Controllers/contentController");
 // Database Population
 catchAsyncErrors(contentModel.storeContent()); 
 catchAsyncErrors(footballModel.populateDatabase());
+catchAsyncErrors(baseballModel.populateDatabase());
 
 // Global Middleware
 app.set('view engine', 'ejs');

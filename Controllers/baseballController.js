@@ -21,7 +21,7 @@ function renderTeam(req, res){
     const opps = baseballModel.getOpponents(teams[0].teamid);
     teams = teams.concat(opps);
 
-    res.render("baseballScoresPage", {"teams": teams})
+    res.render("baseballTeamScores", {"teams": teams})
 }
 
 module.exports = {
