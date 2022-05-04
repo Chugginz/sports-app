@@ -41,40 +41,40 @@ const sessionConfig = {
 	}
 };
 
-app.use(express.static(__dirname + '/public'));
-
-app.use(express.json({limit: '200kb'}))
-
-// Load Error Handlers
+// Error Handlers
 const {notFoundHandler, productionErrorHandler, catchAsyncErrors} = require("./utils/errorHandlers");
 
-// Load Models
+// Validators
+const {userValidator} = require("./Validators/userValidator");
+const {validateTeam, validateWeek} = require("./Validators/footballValidator");
+
+// Models
 const footballModel = require("./Models/footballModels");
 const contentModel = require("./Models/contentModels");
 
-// Populate the Databases (wrapped in async erros because they're asynchronous)
-catchAsyncErrors(contentModel.storeContent()); 
-catchAsyncErrors(footballModel.populateDatabase());
-
-app.set('view engine', 'ejs');
-
-// Load controllers
+// Controllers
 const footballController = require("./Controllers/footballController");
 const userController     = require("./Controllers/userController");
 const contentController  = require("./Controllers/contentController");
 
-// Load Validators
-const userValidator = require("./Validators/userValidator");
+// Database Population
+catchAsyncErrors(contentModel.storeContent()); 
+catchAsyncErrors(footballModel.populateDatabase());
+
+// Global Middleware
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
+app.use(express.json({limit: '200kb'}))
 
 // Homepage Endpoints
 app.get("/home", contentController.renderContent);
 // Football Endpoints
 app.get("/football/scores", footballController.renderScores);
-app.get("/football/scores/team/:team", footballController.renderTeam);
-app.get("/football/scores/:week", footballController.renderWeek);
+app.get("/football/scores/team/:team", validateTeam ,footballController.renderTeam);
+app.get("/football/scores/:week", validateWeek ,footballController.renderWeek);
 // Login Endpoints
-app.post("/api/user", userValidator.userValidator, userController.createNewUser)
-app.post("/api/login", userValidator.userValidator, userController.login)
+app.post("/api/user", userValidator, userController.createNewUser)
+app.post("/api/login", userValidator, userController.login)
 
 //Error Handlers
 // Handles 404 errors
