@@ -23,7 +23,18 @@ const app = express();
 // if in production, set up protections
 if (isProduction) {
 	app.set('trust proxy', 1);
-	app.use(require("helmet")()); // Add helmet in production
+	app.use(
+		helmet({
+			contentSecurityPolicy: {
+				directives: {
+					"img-src": ["'self'", "a.espncdn.com"], // Add domains to this array
+				},
+			},
+			crossOriginResourcePolicy: {
+				policy: "cross-origin"
+			}
+		})
+);; // Add helmet in production
 }
 
 // Development/Production Session Configuration
@@ -45,20 +56,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.json({limit: '200kb'}))
 
-// Fix CSP
-/*
-app.use(
-    helmet({
-        contentSecurityPolicy: {
-            directives: {
-                "img-src": ["'self'", "a2.espncdn.com"], // Add domains to this array
-            },
-        },
-        crossOriginResourcePolicy: {
-            policy: "cross-origin"
-        }
-    })
-);*/
 
 // Load Error Handlers
 const {notFoundHandler, productionErrorHandler, catchAsyncErrors} = require("./utils/errorHandlers");

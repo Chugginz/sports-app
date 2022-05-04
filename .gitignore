@@ -6,9 +6,6 @@ node_modules
 
 # Redis stuff
 dump.rdb
-<<<<<<< HEAD
-=======
 
 # Database
 sports_app.db
->>>>>>> 317925d5cf9a5aad8c809f3f1eaf494305b750d2

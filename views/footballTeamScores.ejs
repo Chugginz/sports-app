@@ -104,7 +104,8 @@
                         <p>
                             <img src="<%= team.logo %>" alt="<%= team.teamname %> logo"
                             width="25"
-                            height="25" />
+                            height="25" 
+                            crossorigin/>
                             <%= team.teamname %>
                             (
                             <%= team.record %>
@@ -126,7 +127,8 @@
                                 <% if (team.opponentid == teams[i].teamid && team.week == teams[i].week){ %>
                                     <img src="<%= teams[i].logo %>" alt="<%= teams[i].teamname %> logo"
                                     width="25"
-                                    height="25" />
+                                    height="25"
+                                    crossorigin/>
                                     <%= teams[i].teamname %>
                                     (
                                     <%= teams[i].record %>
