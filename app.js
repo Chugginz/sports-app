@@ -56,7 +56,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.json({limit: '200kb'}))
 
-
 // Load Error Handlers
 const {notFoundHandler, productionErrorHandler, catchAsyncErrors} = require("./utils/errorHandlers");
 
