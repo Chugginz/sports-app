@@ -82,7 +82,7 @@ async function populateDatabase() {
     const teams = await getAllTeamsDB();
 
     // For each team, iterate through each one
-    for (let i = 0; i < 34; i++){
+    for (let i = 0; i < 30; i++){
         // Initialize the current team
         const currentTeam = teams[i];
 
@@ -165,7 +165,7 @@ async function populateDatabase() {
             }
         }
     }
-    console.log("Database Loaded");
+    console.log("Baseball Database Loaded");
 }
 
 module.exports = {

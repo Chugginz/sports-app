@@ -50,6 +50,7 @@ const {notFoundHandler, productionErrorHandler, catchAsyncErrors} = require("./u
 
 // Load Models
 const footballModel = require("./Models/footballModels");
+const baseballModel = require("./Models/baseballModels");
 const contentModel = require("./Models/contentModels");
 
 // Populate the Databases (wrapped in async erros because they're asynchronous)
@@ -60,6 +61,7 @@ app.set('view engine', 'ejs');
 
 // Load controllers
 const footballController = require("./Controllers/footballController");
+const baseballController = require("./Controllers/baseballController");
 const userController     = require("./Controllers/userController");
 const contentController  = require("./Controllers/contentController");
 
@@ -72,6 +74,10 @@ app.get("/home", contentController.renderContent);
 app.get("/football/scores", footballController.renderScores);
 app.get("/football/scores/team/:team", footballController.renderTeam);
 app.get("/football/scores/:week", footballController.renderWeek);
+//baseball Endpoints
+app.get("/baseball/scores", baseballController.renderScores);
+app.get("/baseball/scores/team/:team", baseballController.renderTeam);
+app.get("/baseball/scores/:week", baseballController.renderWeek);
 // Login Endpoints
 app.post("/api/user", userValidator.userValidator, userController.createNewUser)
 app.post("/api/login", userValidator.userValidator, userController.login)
